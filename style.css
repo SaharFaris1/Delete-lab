@@ -10,7 +10,7 @@ body {
     height: auto;
     display: flex;
     justify-content: center;
-    margin: auto; 
+
 }
 
 .cards {
@@ -19,9 +19,7 @@ body {
     align-items: center; 
 }
 
-h1, h4 {
-    text-align: center; 
-}
+
 
 input, textarea, button {
     width: 100%; 
@@ -43,9 +41,7 @@ img {
     flex-direction: column;
     justify-content: center;
     padding: 10px;
-    width: 100%; 
-    gap: 5px;
-    border-radius: 10px;
+    width: 30%; 
 }
 
 .btn-del {
@@ -63,4 +59,7 @@ img {
     input, textarea, button {
         width: 100%; 
     }
+}
+.user-name{
+   align-items: start;
 }

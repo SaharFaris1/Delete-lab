@@ -6,25 +6,52 @@ let img =document.getElementById("img")
 
 
 
-btn.addEventListener("click", () => {
-    fetch('https://682199fd259dad2655afc11d.mockapi.io/post', {
-        method: 'POST',
-        body: JSON.stringify({
-            username: username.value,
-            textarea: textarea.value,
-            img: img.src
-            
-        
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
 
-    .then((response) => response.json())
-  .then((json) => console.log(json))
-  
-})
+let usernames = []; 
+
+document.getElementById("btn").addEventListener("click", () => {
+    let username = document.getElementById("username").value.trim();
+    let textarea = document.getElementById("textarea").value.trim();
+    let img = document.getElementById("img").value.trim();
+    let errorMessage = "";
+    if (username.length <= 4) {
+        errorMessage += "Username must be more than 4 letters. ";
+    }
+    if (usernames.includes(username)) {
+        errorMessage += "Username already exists. ";
+    }
+    if (textarea.length <= 6) {
+        errorMessage += "Textarea must be more than 6 letters. ";
+    }
+    if (!img) {
+        errorMessage += "Image URL is required. ";
+    }
+
+    if (errorMessage) {
+        alert(errorMessage); 
+    } else {
+     
+        usernames.push(username); 
+        fetch('https://682199fd259dad2655afc11d.mockapi.io/post', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: username,
+                textarea: textarea,
+                img: img
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+      
+      
+
+      
+    }
+});
+
+
+
 fetch('https://682199fd259dad2655afc11d.mockapi.io/post')
  .then((response) => response.json())
  .then((data) => {
